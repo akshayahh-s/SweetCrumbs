@@ -1,5 +1,7 @@
 package bakery;
 
+import javax.swing.ImageIcon;
+
 public class Product {
     private final int id;
     private final String name;
@@ -24,4 +26,20 @@ public class Product {
     public double getPrice() { return price; }
     public String getDescription() { return description; }
     public String getEmoji() { return emoji; }
+
+    public String getImageFileName() {
+        return ImageLoader.getImageFileName(id);
+    }
+
+    public ImageIcon getImageIcon(int width, int height) {
+        return ImageLoader.getProductIcon(id, width, height);
+    }
+
+    public ImageIcon getImageIcon(int width, int height, int cornerRadius) {
+        return ImageLoader.getProductIcon(id, width, height, cornerRadius);
+    }
+
+    public ImageIcon getTopRoundedImageIcon(int width, int height, int cornerRadius) {
+        return ImageLoader.getProductIcon(id, width, height, cornerRadius, true);
+    }
 }

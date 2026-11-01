@@ -1,11 +1,18 @@
 package bakery;
 
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
+        // Enable high-DPI and smooth anti-aliased font rendering
+        System.setProperty("awt.useSystemAAFontSettings", "on");
+        System.setProperty("swing.aatext", "true");
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {}
+
         try {
             DBConnection.testConnection();
         } catch (SQLException e) {
@@ -16,6 +23,7 @@ public class Main {
                     "Database Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
         SwingUtilities.invokeLater(() -> new BakeryApp().setVisible(true));
     }
 }
